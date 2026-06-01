@@ -7,6 +7,7 @@
 <title>AsMet0P | Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <link rel="icon" type="image/png" href="https://i.ibb.co/JWJjM54N/A.png">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -965,7 +966,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
         <div class="exp-head">
           <div style="display:flex;align-items:center;gap:16px">
             <div class="exp-logo-col">
-              <img src="https://i.ibb.co/LXqvhSsf/Screenshot-2026-06-01-114919.png" alt="Happiest Minds Technologies" style="width:100%;height:100%;object-fit:contain;border-radius:10px">
+              <img src="https://i.ibb.co/yn6QrMxJ/Screenshot-2026-06-01-113626.png" alt="Happiest Minds Technologies" style="width:100%;height:100%;object-fit:contain;border-radius:10px">
             </div>
             <div>
               <div class="exp-role">Data Science Intern <span class="active-badge">Active</span></div>
@@ -1124,7 +1125,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
       
       <div class="cv-er" style="display:flex; gap:16px; align-items:flex-start">
         <div class="exp-logo-col" style="margin-top:4px">
-          <img src="https://i.ibb.co/LXqvhSsf/Screenshot-2026-06-01-114919.png" alt="Happiest Minds" style="width:100%;height:100%;object-fit:contain">
+          <img src="https://i.ibb.co/yn6QrMxJ/Screenshot-2026-06-01-113626.png" alt="Happiest Minds" style="width:100%;height:100%;object-fit:contain">
         </div>
         <div style="flex:1">
           <div class="cv-et">Data Science Intern — Happiest Minds Technologies</div>
@@ -1227,10 +1228,10 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
         <a href="https://github.com/AsMetOP" target="_blank" class="link-card" style="display:flex"><div><div class="link-card-label">GitHub</div><div class="link-card-val">AsMetOP</div></div><span class="link-card-arrow">→</span></a>
       </div>
       <div class="reveal" id="contact-form-area">
-        <label class="form-label">Name</label><input type="text" class="form-input" placeholder="Your name"/>
-        <label class="form-label">Email</label><input type="email" class="form-input" placeholder="your@email.com"/>
-        <label class="form-label">Message</label><textarea class="form-textarea" placeholder="Tell me about the project..."></textarea>
-        <button class="form-btn" onclick="sendForm()">Send Message →</button>
+        <label class="form-label">Name</label><input type="text" id="form-name" class="form-input" placeholder="Your name"/>
+        <label class="form-label">Email</label><input type="email" id="form-email" class="form-input" placeholder="your@email.com"/>
+        <label class="form-label">Message</label><textarea id="form-message" class="form-textarea" placeholder="Tell me about the project..."></textarea>
+        <button class="form-btn" id="form-submit-btn" onclick="sendForm()">Send Message →</button>
       </div>
     </div>
   </div>
@@ -1243,7 +1244,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
 
 <script>
 // BACKEND PROXY — API key is stored securely on the server, never exposed here
-const CHAT_API_URL = "https://asmetop-portfolio.vercel.app/api/chat";
+const CHAT_API_URL = "/api/chat";
 
 const SYS = `You are Asmet Ranjan Sahoo's AI portfolio assistant. Be enthusiastic, concise (2-4 sentences), friendly.
 Asmet: CS undergrad KIIT Bhubaneswar (B.Tech CSE 2027, CGPA 8.1). GitHub: AsMetOP. Email: asmetranjan25@gmail.com.
@@ -1381,8 +1382,52 @@ function dropNavClick(k,btn){document.querySelectorAll('.drop-pill').forEach(p=>
 // TABS
 function switchTab(t,e){document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');if(e&&e.target)e.target.classList.add('active')}
 
-// FORM
-function sendForm(){document.getElementById('contact-form-area').innerHTML=`<div class="success-box"><div class="success-icon">✅</div><div class="success-title">Message Sent!</div><div class="success-sub">I'll get back to you soon.</div></div>`}
+// ── EMAILJS CONTACT FORM ──────────────────────────────────────────────────
+// Replace the three placeholders below with your EmailJS credentials:
+//   PUBLIC_KEY  → EmailJS dashboard → Account → Public Key
+//   SERVICE_ID  → EmailJS dashboard → Email Services → Service ID
+//   TEMPLATE_ID → EmailJS dashboard → Email Templates → Template ID
+const EJS_PUBLIC_KEY  = "xME9qsbWqjutdVuPv";
+const EJS_SERVICE_ID  = "service_or0ra4l";
+const EJS_TEMPLATE_ID = "template_jqj4ida";
+
+emailjs.init({ publicKey: EJS_PUBLIC_KEY });
+
+async function sendForm() {
+  const name    = document.getElementById('form-name').value.trim();
+  const email   = document.getElementById('form-email').value.trim();
+  const message = document.getElementById('form-message').value.trim();
+  const btn     = document.getElementById('form-submit-btn');
+
+  if (!name || !email || !message) {
+    btn.textContent = 'Please fill all fields ↑';
+    setTimeout(() => btn.textContent = 'Send Message →', 2000);
+    return;
+  }
+
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  try {
+    await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, {
+      from_name:    name,
+      from_email:   email,
+      message:      message,
+      to_name:      'Asmet',
+    });
+    document.getElementById('contact-form-area').innerHTML = `
+      <div class="success-box">
+        <div class="success-icon">✅</div>
+        <div class="success-title">Message Sent!</div>
+        <div class="success-sub">Thanks ${name}! I'll get back to you at ${email} soon.</div>
+      </div>`;
+  } catch(err) {
+    btn.textContent = 'Failed — try again';
+    btn.disabled = false;
+    setTimeout(() => btn.textContent = 'Send Message →', 3000);
+    console.error('EmailJS error:', err);
+  }
+}
 
 // REVEAL
 const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.1});
