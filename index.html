@@ -7,6 +7,8 @@
 <title>AsMet0P | Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <link rel="icon" type="image/png" href="https://i.ibb.co/JWJjM54N/A.png">
+<link rel="icon" type="image/png" href="https://i.ibb.co/JWJjM54N/A.png">
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","x1l3ld1yzg");</script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -1109,7 +1111,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
           <div class="cv-name">Asmet Ranjan Sahoo</div>
           <div class="cv-role-txt">Data Scientist · Developer · KIIT University, Batch 2027</div>
           <div class="cv-contact-row">
-            <span class="cv-contact-item">asmetranjan25@gmail.com</span>
+            <span class="cv-contact-item">okasmet@gmail.com</span>
             <span class="cv-contact-item">github.com/AsMetOP</span>
             <span class="cv-contact-item">Bhubaneswar, Odisha</span>
           </div>
@@ -1223,7 +1225,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
     <p class="contact-sub reveal">Whether it's a collaboration, an opportunity, or just a conversation about data — I'm all ears.</p>
     <div class="contact-grid">
       <div class="reveal">
-        <a href="mailto:asmetranjan25@gmail.com" class="link-card" style="display:flex"><div><div class="link-card-label">Email</div><div class="link-card-val">asmetranjan25@gmail.com</div></div><span class="link-card-arrow">→</span></a>
+        <a href="mailto:okasmet@gmail.com" class="link-card" style="display:flex"><div><div class="link-card-label">Email</div><div class="link-card-val">okasmet@gmail.com</div></div><span class="link-card-arrow">→</span></a>
         <a href="https://www.linkedin.com/in/asmet-r-sahoo-199314243/" target="_blank" class="link-card" style="display:flex"><div><div class="link-card-label">LinkedIn</div><div class="link-card-val">asmet-r-sahoo</div></div><span class="link-card-arrow">→</span></a>
         <a href="https://github.com/AsMetOP" target="_blank" class="link-card" style="display:flex"><div><div class="link-card-label">GitHub</div><div class="link-card-val">AsMetOP</div></div><span class="link-card-arrow">→</span></a>
       </div>
@@ -1247,7 +1249,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify
 const CHAT_API_URL = "/api/chat";
 
 const SYS = `You are Asmet Ranjan Sahoo's AI portfolio assistant. Be enthusiastic, concise (2-4 sentences), friendly.
-Asmet: CS undergrad KIIT Bhubaneswar (B.Tech CSE 2027, CGPA 8.1). GitHub: AsMetOP. Email: asmetranjan25@gmail.com.
+Asmet: CS undergrad KIIT Bhubaneswar (B.Tech CSE 2027, CGPA 8.1). GitHub: AsMetOP. Email: okasmet@gmail.com.
 Current: Data Science Intern Happiest Minds Technologies (Apr 2026-present) — geospatial MCDM pipeline (AHP, TOPSIS, Shannon Entropy, OSMnx, GeoPandas, Shapely) for clinic site selection Delhi/UP.
 Past: Terraivise (ViT+MAE satellite segmentation, PyTorch Lightning), Pinnacle Labs (lane detection, OpenCV).
 Flagship: KisanDoc — offline Flutter+TFLite+MobileNetV2, 15 crop diseases, ~90% accuracy, <200ms, multilingual TTS.
@@ -1561,7 +1563,7 @@ async function sendChatHero() {
       return;
     }
 
-    const reply = data.reply || "I am running into temporary bandwidth drops. You can always contact Asmet at asmetranjan25@gmail.com! ✉️";
+    const reply = data.reply || "I am running into temporary bandwidth drops. You can always contact Asmet at okasmet@gmail.com! ✉️";
     chatHistory.push({ role: 'model', content: reply });
     addMsgHero(reply, 'bot');
   } catch(e) {
@@ -1616,6 +1618,7 @@ function getSmartLocalReply(msg) {
   if (q.includes('pinnacle')) {
     return "At Pinnacle Labs, Asmet developed a real-time road lane detection pipeline using OpenCV (Canny edge detection and Hough Transform) designed for robust performance across varying lighting conditions.";
   }
+
   if (q.includes('project') || q.includes('build') || q.includes('portfolio') || q.includes('shipped')) {
     return "Asmet has built several impressive systems, including 'KisanDoc' (AI crop disease diagnosis), 'Doccy' (React Native FastAPI emergency app), 'Cloud Observability Platform' (Kafka + Spark + AWS), and published research on Soil Moisture prediction.";
   }
@@ -1626,7 +1629,7 @@ function getSmartLocalReply(msg) {
     return "Asmet has 3 professional internships: currently at Happiest Minds Technologies (Geospatial MCDM), previously at Terraivise (Vision Transformers + Satellite Imagery), and Pinnacle Labs (OpenCV Lane Detection).";
   }
   if (q.includes('hire') || q.includes('available') || q.includes('placement') || q.includes('contact') || q.includes('email')) {
-    return "Asmet is seeking internships/full-time roles and is open to campus placements starting August 2026. You can reach him directly at asmetranjan25@gmail.com or through his LinkedIn linked on the page!";
+    return "Asmet is seeking internships/full-time roles and is open to campus placements starting August 2026. You can reach him directly at okasmet@gmail.com or through his LinkedIn linked on the page!";
   }
   
   return "I'm Asmet's AI Assistant. Ask me about his data pipelines at Happiest Minds, KisanDoc, Doccy, his Cloud Observability Platform, or his programming stack!";
